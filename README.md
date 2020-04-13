@@ -1,1 +1,1 @@
-# ce807
+# CE807: Text Analytics - Assignment 2
