@@ -21,7 +21,7 @@ def get_parser():
     parser.add_argument('-t', type=float, dest='test_size', default=0.1, help='Test size (0, 1>.')
     parser.add_argument('--max_depth', type=int, dest='max_depth', default=None, help='The maximum depth of the tree.')
     parser.add_argument('--min_ss', type=int, dest='min_ss', default=2, help='The minimum number of samples required to split an internal tree node.')
-    parser.add_argument('--max_features', type=int, dest='max_features', default=None, help='The number of features to consider when looking for the best split in the tree.')
+    parser.add_argument('--max_features', type=str, dest='max_features', default=None, help='The number of features to consider when looking for the best split in the tree.')
     parser.add_argument('-n', type=int, dest='n_estimators', default=10, help='The number of estimators in the ensemble.')
     parser.add_argument('-j', type=int, dest='n_jobs', default=-1, help='The number of jobs to run in parallel.')
     parser.add_argument('-v', type=int, dest='verbose', default=0, help='Verbosity of the program.')
