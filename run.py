@@ -109,7 +109,7 @@ if __name__ == "__main__":
             print(f'Running {options.cv}-fold cross-validation')
 
         scores = cross_validate(clf, X_train.toarray(), Y_train.toarray(), cv=options.cv,
-                        scoring=make_scorer(f1_score, average='samples'), n_jobs=options.n_jobs)
+                        scoring=make_scorer(f1_score, average='samples'), n_jobs=options.n_jobs, verbose=options.verbose)
 
         test_score = scores['test_score']
         fit_time = scores['fit_time']
@@ -132,7 +132,7 @@ if __name__ == "__main__":
         Y_pred = clf.predict(X_test.toarray())
         pred_time_end = default_timer()
 
-        test_score = f1_score(Y_test, Y_pred, average='samples')
+        test_score = f1_score(Y_test.toarray(), Y_pred, average='samples')
         print("F1-score: %0.2f" % (test_score))
         print("Fit time: %0.2f" % (fit_time_end - fit_time_start))
         print("Prediction time: %0.2f" % (pred_time_end - pred_time_start))
