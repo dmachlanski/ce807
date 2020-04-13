@@ -25,6 +25,7 @@ def get_parser():
     parser.add_argument('-n', type=int, dest='n_estimators', default=10, help='The number of estimators in the ensemble.')
     parser.add_argument('-j', type=int, dest='n_jobs', default=-1, help='The number of jobs to run in parallel.')
     parser.add_argument('-v', type=int, dest='verbose', default=0, help='Verbosity of the program.')
+    parser.add_argument('-b', '--batch', dest='is_batch_mode', action='store_true', default=False, help='Whether the program runs in a batch mode (affects file locations).')
 
     return parser
 
@@ -34,7 +35,8 @@ def get_data(options):
         print(f'Loading data [dataset: {options.data_name}, fraction: {options.data_fraction}, test size: {options.test_size}]')
     
     # Load the data.
-    data = pd.read_csv(f'data/{options.data_name}.csv')
+    location_prefix = '../../' if options.is_batch_mode else ''
+    data = pd.read_csv(f'{location_prefix}data/{options.data_name}.csv')
 
     # Get raw values from the DataFrame.
     X_all = data['title'].values
