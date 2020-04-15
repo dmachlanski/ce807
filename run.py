@@ -13,7 +13,7 @@ from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 def get_parser():
     """ Builds the argument parser for the program. """
     parser = argparse.ArgumentParser()
-    parser.add_argument('-c', type=str, dest='clf_key', default='dt', choices=['dt', 'xt', 'xts', 'rf'], help='A classifier to use.')
+    parser.add_argument('-c', type=str, dest='clf_key', default='dt', choices=['dt', 'xts', 'rf'], help='A classifier to use.')
     parser.add_argument('-m', type=str, dest='mode', default='test', choices=['cv', 'test'], help='Mode to run the program in (cross-validation or test).')
     parser.add_argument('-k', type=int, dest='cv', default=5, help='Number of folds in KFold cross-validation.')
     parser.add_argument('-d', '--data', type=str, dest='data_name', default='econbiz', help='Name of the dataset to use (econbiz or pubmed).')
@@ -68,9 +68,6 @@ def get_model(options):
         "dt" : DecisionTreeClassifier(max_depth=options.max_depth,
                                       min_samples_split=options.min_ss,
                                       max_features=options.max_features),
-        "xt" : ExtraTreeClassifier(max_depth=options.max_depth,
-                                   min_samples_split=options.min_ss,
-                                   max_features=options.max_features),
         "xts" : ExtraTreesClassifier(n_estimators=options.n_estimators,
                                      n_jobs=options.n_jobs,
                                      max_depth=options.max_depth,
