@@ -2,7 +2,7 @@
 
 Extreme multi-label text classification.
 
-## Code
+## Files
 - pre-processing.ipynb - data pre-processing
 - run.py - main code for training, prediction and evaluation
 - report.pdf - final report
